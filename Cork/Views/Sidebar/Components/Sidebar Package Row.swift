@@ -32,10 +32,18 @@ struct SidebarPackageRow: View
         {
             contextMenuContent
         }
+        .swipeActions(edge: .leading, allowsFullSwipe: true)
+        {
+            tagUntagButton
+        }
+        .swipeActions(edge: .trailing, allowsFullSwipe: false)
+        {
+            UninstallPackageButton(package: package, isCalledFromSidebar: true)
+        }
     }
 
     @ViewBuilder
-    var contextMenuContent: some View
+    var tagUntagButton: some View
     {
         Button
         {
@@ -48,8 +56,15 @@ struct SidebarPackageRow: View
                 )
             }
         } label: {
-            Text(package.isTagged ? "sidebar.section.all.contextmenu.untag-\(package.name)" : "sidebar.section.all.contextmenu.tag-\(package.name)")
+            Label(package.isTagged ? "sidebar.section.all.contextmenu.untag-\(package.name)" : "sidebar.section.all.contextmenu.tag-\(package.name)", systemImage: package.isTagged ? "tag.slash" : "tag")
         }
+    }
+    
+    @ViewBuilder
+    var contextMenuContent: some View
+    {
+        tagUntagButton
+        
         Divider()
 
         UninstallPackageButton(package: package, isCalledFromSidebar: true)
