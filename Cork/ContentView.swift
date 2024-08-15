@@ -138,36 +138,39 @@ struct ContentView: View, Sendable
                 {
                     upgradePackagesButton
                 }
+                .defaultCustomization(.visible)
 
                 ToolbarItem(id: "addTap", placement: .primaryAction)
                 {
                     addTapButton
                 }
+                .defaultCustomization(.visible)
 
                 ToolbarItem(id: "installPackage", placement: .primaryAction)
                 {
                     installPackageButton
                 }
-
-                ToolbarItem(id: "maintenance", placement: .primaryAction)
-                {
-                    performMaintenanceButton
-                }
-                .defaultCustomization(.hidden)
-
-                ToolbarItem(id: "manageServices", placement: .primaryAction)
-                {
-                    manageServicesButton
-                }
-                .defaultCustomization(.hidden)
-
-                ToolbarItem(id: "spacer", placement: .primaryAction)
+                .defaultCustomization(.visible)
+                
+                ToolbarItem(id: "spacer", placement: .automatic)
                 {
                     Spacer()
                 }
                 .defaultCustomization(.hidden)
 
-                ToolbarItem(id: "divider", placement: .primaryAction)
+                ToolbarItem(id: "maintenance", placement: .secondaryAction)
+                {
+                    performMaintenanceButton
+                }
+                .defaultCustomization(.hidden)
+
+                ToolbarItem(id: "manageServices", placement: .secondaryAction)
+                {
+                    manageServicesButton
+                }
+                .defaultCustomization(.hidden)
+
+                ToolbarItem(id: "divider", placement: .automatic)
                 {
                     Divider()
                 }
