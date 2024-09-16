@@ -26,11 +26,11 @@ enum PackageLoadingError: LocalizedError
                 return String(localized: "error.package-loading.could-not-load-packages")
             }
         case .failedWhileLoadingCertainPackage(let string, let uRL, let failureReason):
-            return String(localized: "error.package-loading.could-not-load-\(string)-at-\(uRL.absoluteString)-because-\(failureReason)")
+            return String(localized: "error.package-loading.could-not-load-\(string)-at-\(uRL.absoluteString)-because-\(failureReason)", comment: "Couldn't load package (package name) at (package URL) because (failure reason)")
         case .packageDoesNotHaveAnyVersionsInstalled(let string):
             return String(localized: "error.package-loading.\(string)-does-not-have-any-versions-installed")
         case .packageIsNotAFolder(let string, _):
-            return String(localized: "error.package-loading.\(string)-not-a-folder")
+            return String(localized: "error.package-loading.\(string)-not-a-folder", comment: "Package folder in this context means a folder that encloses package versions. Every package has its own folder, and this error occurs when the provided URL does not point to a folder that encloses package versions")
         }
     }
 }

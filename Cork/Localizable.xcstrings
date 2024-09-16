@@ -172,6 +172,12 @@
             "value" : "정보"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Про"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3269,7 +3275,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Відмінити"
+            "value" : "Скасувати"
           }
         },
         "zh-Hans" : {
@@ -5246,7 +5252,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Цю дію неможливо відмінити"
+            "value" : "Цю дію неможливо скасувати"
           }
         },
         "zh-Hans" : {
@@ -11494,7 +11500,7 @@
       "localizations" : {
         "cs" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Homebrew poskytnul nesprávnou odezvu"
           }
         },
@@ -11536,8 +11542,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Не вдалося розшифрувати відповідь Homebrew"
+            "state" : "translated",
+            "value" : "Homebrew не повернув коректні дані"
           }
         },
         "zh-Hans" : {
@@ -12327,7 +12333,7 @@
       "localizations" : {
         "cs" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Homebrew poskytnul nesprávnou odezvu"
           }
         },
@@ -12369,8 +12375,8 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Не вдалося розшифрувати найкращі пакети"
+            "state" : "translated",
+            "value" : "Homebrew не повернув коректні дані"
           }
         },
         "zh-Hans" : {
@@ -13453,10 +13459,22 @@
     },
     "debug.action.activate-demo" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DEBUG: Aktivovat demo"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DEBUG: Activate demo"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВІДЛАДКА: Активувати демо-версію"
           }
         },
         "zh-Hans" : {
@@ -13469,10 +13487,22 @@
     },
     "debug.action.licensing" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DEBUG: Licence"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DEBUG: Licensing"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВІДЛАДКА: Ліцензування"
           }
         },
         "zh-Hans" : {
@@ -13485,10 +13515,22 @@
     },
     "debug.action.reset-license-state" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DEBUG: Resetovat stav licence"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DEBUG: Reset licensing state"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВІДЛАДКА: Скинути стан ліцензії"
           }
         },
         "zh-Hans" : {
@@ -13500,12 +13542,23 @@
       }
     },
     "debug.navigation" : {
-      "extractionState" : "stale",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DEBUG"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DEBUG"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВІДЛАДКА"
           }
         },
         "zh-Hans" : {
@@ -13518,6 +13571,12 @@
     },
     "error.brewfile.export.could-not-determine-working-directory" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při zjišťování složky pro export souboru Brewfile se vyskytla chyba"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13546,6 +13605,12 @@
     },
     "error.brewfile.export.could-not-dump-with-error.%@" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při exportu souboru Brewfile se vyskytla chyba: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13574,6 +13639,12 @@
     },
     "error.brewfile.export.could-not-read-temporary-brewfile" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při čtení obsahu dočasného souboru Brewfile se vyskytla chyba"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13602,6 +13673,12 @@
     },
     "error.brewfile.importing.could-not-get-selected-brewfile-location" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při hledání adresy tohoto souboru Brewfile se vyskytla chyba"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13653,6 +13730,12 @@
     },
     "error.brewfile.importing.could-not-import.%@" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při importování souboru Brewfile se vyskytla chyba: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13681,6 +13764,12 @@
     },
     "error.data-downloading.invalid-response.%lld" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server Homebrew poskytnul chybnou odezvu: %lld"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13709,6 +13798,12 @@
     },
     "error.data-downloading.invalid-response.undetermined-response-code" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server Homebrew odpověděl s neplatným kódem, a tento kód nebylo možné přečíst"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13737,6 +13832,12 @@
     },
     "error.data-downloading.invalid-url" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poskytnutá adresa není platnou adresou Homebrew serveru"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13765,6 +13866,12 @@
     },
     "error.data-downloading.no-data-received" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server Homebrew při načítání nejoblíbenějších balíčků nevrátil odpověď"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13793,6 +13900,12 @@
     },
     "error.finder-reveal.could-not-find-package-in-parent" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při hledání žádaného balíčku ve složce se vyskytla chyba"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13923,6 +14036,12 @@
     },
     "error.json-parsing.could-not-convert-string-to-data.%@" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při převodu datového typu String do Data se vyskytla chyba: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13945,6 +14064,12 @@
     },
     "error.json-parsing.could-not-decode.%@" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při dekódování JSON se vyskytla chyba: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13967,6 +14092,12 @@
     },
     "error.licensing.auth-complex-not-encoded" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autorizační komplex pro účely načtení licence se nepovedlo zakódovat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13989,6 +14120,12 @@
     },
     "error.licensing.not-connected-to-internet" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nejste připojeni k internetu. Licenci nebylo možné ověřit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14011,6 +14148,12 @@
     },
     "error.licensing.other-error.%@" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při zjišťování stavu licence se vyskytla neimpleentovaná chyba: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14033,6 +14176,12 @@
     },
     "error.licensing.timed-out" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Připojení k licenčnímu serveru vypršelo"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14055,6 +14204,12 @@
     },
     "error.maintenance.cache-purging.command-failed" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při mazání mezipaměti se vyskytla chyba"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14077,6 +14232,12 @@
     },
     "error.maintenance.health-check.standard-error-not-empty" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkce vrátila chyby"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14099,6 +14260,12 @@
     },
     "error.maintenance.orphan-removal.could-not-get-number-of-uninstalled-orphans" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při počítání balíčků, které by tímto byly odstraněny, se vyskytla chyba"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14138,6 +14305,12 @@
     },
     "error.maintenance.orphan-removal.could-not-uninstall-orphans.%@" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při odinstalování osiřelých balíčku se vyskytla chyba: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14160,6 +14333,12 @@
     },
     "error.maintenance.orphan-uninstallation.unexpected-terminal-output" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkce pro odinstalaci osiřelých balíčků poskytla nečekanou odezvu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14182,6 +14361,12 @@
     },
     "error.outdated-packages.could-not-decode-command-output.%@" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při dekódování JSON se vyskytla chyba: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14210,6 +14395,12 @@
     },
     "error.outdated-packages.home-not-set" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parametr HOME není pro Homebrew příkazy správně nastaven"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14238,6 +14429,12 @@
     },
     "error.outdated-packages.other-error.%@" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při načítání zastaralých balíčků se vyskytla neimplementovaná chyba: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14334,16 +14531,22 @@
     },
     "error.package-loading.%@-does-not-have-any-versions-installed" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balíček %@ nemá nainstalované žádné verze"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Package %@ does not have any versions installed"
           }
         },
-        "ru" : {
+        "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "error.package-loading.%@-does-not-have-any-versions-installed"
+            "state" : "translated",
+            "value" : "Пакет %@ не має жодних встановлених версій"
           }
         },
         "zh-Hans" : {
@@ -14355,17 +14558,24 @@
       }
     },
     "error.package-loading.%@-not-a-folder" : {
+      "comment" : "Package folder in this context means a folder that encloses package versions. Every package has its own folder, and this error occurs when the provided URL does not point to a folder that encloses package versions",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ není balíček"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ is not a package folder"
           }
         },
-        "ru" : {
+        "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "error.package-loading.%@-not-a-folder"
+            "state" : "translated",
+            "value" : "%@ не є папкою пакету"
           }
         },
         "zh-Hans" : {
@@ -14445,22 +14655,29 @@
       }
     },
     "error.package-loading.could-not-load-%@-at-%@-because-%@" : {
+      "comment" : "Couldn't load package (package name) at (package URL) because (failure reason)",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při načítání balíčku %1$@ (%2$@) se vyskytla chyba: %3$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Couldn't load package%1$@ (%2$@):\n%3$@"
+            "value" : "Couldn't load package %1$@ (%2$@):\n%3$@"
           }
         },
-        "ru" : {
+        "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "error.package-loading.could-not-load-%1$@-at-%2$@-because-%3$@"
+            "state" : "translated",
+            "value" : "Не вдалося завантажити пакет %1$@ (%2$@):\n%3$@"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "无法加载软件包 %1$@ (%2$@):  %3$@"
           }
         }
@@ -14468,16 +14685,22 @@
     },
     "error.package-loading.could-not-load-packages" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při načítání balíčků se vyskytla chyba"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Couldn't load packages"
           }
         },
-        "ru" : {
+        "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "error.package-loading.could-not-load-packages"
+            "state" : "translated",
+            "value" : "Не вдалося завантажити пакети"
           }
         },
         "zh-Hans" : {
@@ -14490,16 +14713,22 @@
     },
     "error.package-loading.could-not-load-packages.%@" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při načítání balíčků se vyskytla chyba: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Couldn't load packages:\n%@"
           }
         },
-        "ru" : {
+        "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "error.package-loading.could-not-load-packages.%@"
+            "state" : "translated",
+            "value" : "Не вдалося завантажити пакети:\n%@"
           }
         },
         "zh-Hans" : {
@@ -14546,16 +14775,22 @@
     },
     "error.package-loading.last-path-component-of-checked-package-url-is-folder-containing-packages-itself.casks" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poskytnutá cesta k souboru vede do složky obsahující soudky místo balíčku.\nVás homebrew je rozbitý, tohle není chyba Corku"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "The specified path points to the Cask folder itself, not a package.\nYour Homebrew is broken, this is not a Cork issue"
           }
         },
-        "ru" : {
+        "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "error.package-loading.last-path-component-of-checked-package-url-is-folder-containing-packages-itself.casks"
+            "state" : "translated",
+            "value" : "Цей шлях вказує на саму папку Cask, а не на пакет.\nВаш Homebrew не працює, це не проблема Cork"
           }
         },
         "zh-Hans" : {
@@ -14568,16 +14803,22 @@
     },
     "error.package-loading.last-path-component-of-checked-package-url-is-folder-containing-packages-itself.formulae" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poskytnutá cesta k souboru vede do složky obsahující vzorce místo balíčku.\nVás homebrew je rozbitý, tohle není chyba Corku"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "The specified path points to the Formulae folder itself, not a package.\nYour Homebrew is broken, this is not a Cork issue"
           }
         },
-        "ru" : {
+        "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "error.package-loading.last-path-component-of-checked-package-url-is-folder-containing-packages-itself.formulae"
+            "state" : "translated",
+            "value" : "Цей шлях вказує на саму папку Formulae, а не на пакет.\nВаш Homebrew не працює, це не проблема Cork"
           }
         },
         "zh-Hans" : {
@@ -14726,6 +14967,12 @@
     },
     "error.package-retrieval.uuid.could-not-find-any-packages-in-tracker" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poskytnuté UUID balíčku nebylo nalezeno"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14754,6 +15001,12 @@
     },
     "error.permissions.could-not-obtain-folder-access-permissions.%@" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nepovedlo se získat oprávnění k přístupu do složky: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14782,6 +15035,12 @@
     },
     "error.regex.nothing-matched" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "REGEX nic nenašel"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15014,6 +15273,12 @@
     },
     "error.services.stopping.could-not-stop-service.%@" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při ukončování služby se vyskytla chyba: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15059,6 +15324,12 @@
     },
     "error.tap.untap.could-not-untap.tap-%@.failure-reason-%@" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při odstraňování pípy %1$@ se vyskytla chyba: %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15229,6 +15500,12 @@
     },
     "error.top-packages.impossible-error" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žádaný balíček nebyl nalezen, i když měl být"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18438,7 +18715,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Деякі кеші не були очищені через те, що %@ не оновлено"
+            "value" : "Деякі кеші не було очищено через те, що %@ не було оновлено"
           }
         },
         "zh-Hans" : {
@@ -18608,25 +18885,25 @@
               "few" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Деякі кеші не були очищені через те, що %@ та %lld інших пакети не оновлено"
+                  "value" : "Деякі кеші не було очищено через те, що не було оновлено інших пакетів %1$@ та %2$lld"
                 }
               },
               "many" : {
                 "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Деякі кеші не були очищені через те, що %@ та %lld інших пакетів не оновлено"
+                  "state" : "translated",
+                  "value" : "Деякі кеші не було очищено через те, що не було оновлено інші пакети %1$@ та %2$lld"
                 }
               },
               "one" : {
                 "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Деякі кеші не були очищені через те, що %@ та %lld інший пакет не оновлено"
+                  "state" : "translated",
+                  "value" : "Деякі кеші не було очищено через те, що не було оновлено інший пакет %1$@ та %2$lld"
                 }
               },
               "other" : {
                 "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Деякі кеші не були очищені через те, що %@ та %lld інших пакетів не оновлено"
+                  "state" : "translated",
+                  "value" : "Деякі кеші не було очищено через те, що не було оновлено інші пакети %1$@ та %2$lld"
                 }
               }
             }
@@ -37941,16 +38218,22 @@
     },
     "start-page.loading.failed.title" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Při načítání zastaralých balíčků se vyskytla chyba"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Couldn't check for outdated packges"
           }
         },
-        "ru" : {
+        "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "start-page.loading.failed.title"
+            "state" : "translated",
+            "value" : "Не вдалося перевірити застарілі пакети"
           }
         }
       }
