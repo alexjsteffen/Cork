@@ -32,7 +32,7 @@ struct SidebarPackageRow: View
         {
             contextMenuContent
         }
-        .swipeActions(edge: .leading, allowsFullSwipe: true)
+        .swipeActions(edge: .leading, allowsFullSwipe: false)
         {
             tagUntagButton
         }
