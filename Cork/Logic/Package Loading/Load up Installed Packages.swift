@@ -5,8 +5,8 @@
 //  Created by David Bureš on 11.02.2023.
 //
 
-import Foundation
 import CorkShared
+import Foundation
 
 @MainActor
 func loadUpPackages(whatToLoad: PackageType, appState: AppState) async -> Set<BrewPackage>
@@ -20,9 +20,9 @@ func loadUpPackages(whatToLoad: PackageType, appState: AppState) async -> Set<Br
         switch whatToLoad
         {
         case .formula:
-            contentsOfFolder = try await getContentsOfFolder(targetFolder: AppConstants.brewCellarPath)
+            contentsOfFolder = try await loadPackagesFromFilesystem(targetFolder: AppConstants.brewCellarPath)
         case .cask:
-            contentsOfFolder = try await getContentsOfFolder(targetFolder: AppConstants.brewCaskPath)
+            contentsOfFolder = try await loadPackagesFromFilesystem(targetFolder: AppConstants.brewCaskPath)
         }
     }
     catch let packageLoadingError as PackageLoadingError

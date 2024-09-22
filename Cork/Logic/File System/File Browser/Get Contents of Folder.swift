@@ -36,7 +36,7 @@ enum PackageLoadingError: LocalizedError
     }
 }
 
-func getContentsOfFolder(targetFolder: URL) async throws -> Set<BrewPackage>
+func loadPackagesFromFilesystem(targetFolder: URL) async throws -> Set<BrewPackage>
 {
     do
     {
@@ -45,13 +45,13 @@ func getContentsOfFolder(targetFolder: URL) async throws -> Set<BrewPackage>
         {
             throw PackageLoadingError.failedWhileLoadingPackages(failureReason: String(localized: "alert.fatal.could-not-filter-invalid-packages"))
         }
-
+        
         let loadedPackages: Set<BrewPackage> = try await withThrowingTaskGroup(of: BrewPackage.self, returning: Set<BrewPackage>.self)
         { taskGroup in
             for item in items
             {
                 let fullURLToPackageFolderCurrentlyBeingProcessed: URL = targetFolder.appendingPathComponent(item, conformingTo: .folder)
-
+                
                 taskGroup.addTask(priority: .high)
                 {
                     guard let versionURLs: [URL] = fullURLToPackageFolderCurrentlyBeingProcessed.packageVersionURLs
@@ -68,16 +68,16 @@ func getContentsOfFolder(targetFolder: URL) async throws -> Set<BrewPackage>
                             throw PackageLoadingError.packageIsNotAFolder(item, targetFolder.appendingPathComponent(item, conformingTo: .fileURL))
                         }
                     }
-
+                    
                     do
                     {
                         if versionURLs.isEmpty
                         {
                             throw PackageLoadingError.packageDoesNotHaveAnyVersionsInstalled(item)
                         }
-
+                        
                         let wasPackageInstalledIntentionally: Bool = try await targetFolder.checkIfPackageWasInstalledIntentionally(versionURLs)
-
+                        
                         let foundPackage: BrewPackage = .init(
                             name: item,
                             type: targetFolder.packageType,
@@ -86,7 +86,7 @@ func getContentsOfFolder(targetFolder: URL) async throws -> Set<BrewPackage>
                             installedIntentionally: wasPackageInstalledIntentionally,
                             sizeInBytes: fullURLToPackageFolderCurrentlyBeingProcessed.directorySize
                         )
-
+                        
                         return foundPackage
                     }
                     catch
@@ -95,7 +95,7 @@ func getContentsOfFolder(targetFolder: URL) async throws -> Set<BrewPackage>
                     }
                 }
             }
-
+            
             var loadedPackages: Set<BrewPackage> = .init()
             for try await package in taskGroup
             {
@@ -103,7 +103,7 @@ func getContentsOfFolder(targetFolder: URL) async throws -> Set<BrewPackage>
             }
             return loadedPackages
         }
-
+        
         return loadedPackages
     }
     catch
