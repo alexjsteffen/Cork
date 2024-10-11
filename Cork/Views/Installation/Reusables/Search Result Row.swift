@@ -30,11 +30,6 @@ struct SearchResultRow: View, Sendable
             HStack(alignment: .center)
             {
                 SanitizedPackageName(packageName: searchResult.packageName, shouldShowVersion: true)
-                
-                if let additionalVersions = searchResult.additionalVersions
-                {
-                    Text(additionalVersions.joined(separator: ", "))
-                }
 
                 if searchResult.packageType == .formula
                 {

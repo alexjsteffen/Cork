@@ -149,7 +149,27 @@ private struct SearchResultsSection: View
             {
                 ForEach(packageList)
                 { package in
-                    SearchResultRow(searchResult: package)
+                    if let additionalVersions = package.additionalVersions
+                    {
+                        DisclosureGroup
+                        {
+                            ForEach(additionalVersions, id: \.self)
+                            { additionalVersion in
+                                SearchResultRow(
+                                    searchResult: .init(
+                                        packageName: "\(package.packageName)@\(additionalVersion)",
+                                        packageType: package.packageType)
+                                )
+                            }
+                        } label: {
+                            SearchResultRow(searchResult: package)
+                        }
+
+                    }
+                    else
+                    {
+                        SearchResultRow(searchResult: package)
+                    }
                 }
             }
         } header: {
