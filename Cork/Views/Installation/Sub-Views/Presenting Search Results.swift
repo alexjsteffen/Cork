@@ -109,7 +109,11 @@ struct PresentingSearchResultsView: View
             {
                 let packageToInstall: SearchResult = try foundPackageSelection.getPackage(tracker: searchResultTracker)
 
-                installationProgressTracker.packageBeingInstalled = PackageInProgressOfBeingInstalled(package: .init(name: packageToInstall.packageName, type: packageToInstall.packageType, installedOn: nil, versions: packageToInstall.versions, sizeInBytes: nil), installationStage: .ready, packageInstallationProgress: 0)
+                installationProgressTracker.packageBeingInstalled = .init(
+                    package: packageToInstall.convertToPackage(),
+                    installationStage: .ready,
+                    packageInstallationProgress: 0
+                )
 
                 #if DEBUG
                     AppConstants.logger.info("Packages to install: \(installationProgressTracker.packageBeingInstalled.package.name, privacy: .public)")

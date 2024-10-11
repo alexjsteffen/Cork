@@ -31,7 +31,10 @@ struct SearchResultRow: View, Sendable
             {
                 SanitizedPackageName(packageName: searchResult.packageName, shouldShowVersion: true)
                 
-                Text(searchResult.versions.joined(separator: " ,"))
+                if let additionalVersions = searchResult.additionalVersions
+                {
+                    Text(additionalVersions.joined(separator: ", "))
+                }
 
                 if searchResult.packageType == .formula
                 {

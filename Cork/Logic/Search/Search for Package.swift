@@ -42,24 +42,47 @@ private func processSearchResults(packageNameArray: [String], packageType: Packa
         guard let splitPackageNameAndVersion = packageName.splitPackageNameAndVersion else
         {
             /// If the split fails, just append it as-is
-            finalArray.append(.init(packageName: packageName, packageType: packageType, versions: .init()))
+            finalArray.append(.init(packageName: packageName, packageType: packageType, additionalVersions: .init()))
             continue
         }
         
         /// Let's see if this package was already found before
         if let indexOfPreviouslyFoundPackage = finalArray.firstIndex(where: { $0.packageName == splitPackageNameAndVersion.packageName })
         { /// Yes, it was found before. Let's just append its version
-            finalArray[indexOfPreviouslyFoundPackage].versions.append(splitPackageNameAndVersion.packageVersion)
+            if let additionalVersion = splitPackageNameAndVersion.additionalVersion
+            {
+                if finalArray[indexOfPreviouslyFoundPackage].additionalVersions == nil
+                {
+                    finalArray[indexOfPreviouslyFoundPackage].additionalVersions = [additionalVersion]
+                }
+                else
+                {
+                    finalArray[indexOfPreviouslyFoundPackage].additionalVersions?.append(additionalVersion)
+                }
+            }
         }
         else
         { /// No, it was not found before. Let's create it
-            finalArray.append(
-                .init(
-                    packageName: splitPackageNameAndVersion.packageName,
-                    packageType: packageType,
-                    versions: [splitPackageNameAndVersion.packageVersion]
+            if let additionalVersion = splitPackageNameAndVersion.additionalVersion
+            {
+                finalArray.append(
+                    .init(
+                        packageName: splitPackageNameAndVersion.packageName,
+                        packageType: packageType,
+                        additionalVersions: [additionalVersion]
+                    )
                 )
-            )
+            }
+            else
+            {
+                finalArray.append(
+                    .init(
+                        packageName: splitPackageNameAndVersion.packageName,
+                        packageType: packageType,
+                        additionalVersions: nil
+                    )
+                )
+            }
         }
     }
     
@@ -68,15 +91,22 @@ private func processSearchResults(packageNameArray: [String], packageType: Packa
 
 private extension String
 {
-    var splitPackageNameAndVersion: (packageName: String, packageVersion: String)?
+    var splitPackageNameAndVersion: (packageName: String, additionalVersion: String?)?
     {
-        let splitName: [String] = self.components(separatedBy: "@")
-        
-        guard let packageName = splitName.first, let packageVersion = splitName.last else
+        if self.contains("@")
         {
-            return nil
+            let splitName: [String] = self.components(separatedBy: "@")
+            
+            guard let packageName = splitName.first, let packageVersion = splitName.last else
+            {
+                return nil
+            }
+            
+            return (packageName, packageVersion)
         }
-        
-        return (packageName, packageVersion)
+        else
+        {
+            return (self, nil)
+        }
     }
 }

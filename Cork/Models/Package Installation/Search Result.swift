@@ -15,7 +15,7 @@ struct SearchResult: Identifiable, Hashable, Codable
     let packageName: String
     let packageType: PackageType
     
-    var versions: [String]
+    var additionalVersions: [String]?
 }
 
 extension SearchResult
@@ -27,7 +27,7 @@ extension SearchResult
             name: self.packageName,
             type: self.packageType,
             installedOn: nil,
-            versions: self.versions,
+            versions: self.additionalVersions ?? .init(),
             sizeInBytes: nil
         )
     }
