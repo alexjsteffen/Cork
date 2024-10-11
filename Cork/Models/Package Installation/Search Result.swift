@@ -15,7 +15,7 @@ struct SearchResult: Identifiable, Hashable, Codable
     let packageName: String
     let packageType: PackageType
     
-    let versions: [String]
+    var versions: [String]
 }
 
 extension SearchResult

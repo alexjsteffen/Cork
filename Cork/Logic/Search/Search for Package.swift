@@ -8,26 +8,75 @@
 import Foundation
 import CorkShared
 
-func searchForPackage(packageName: String, packageType: PackageType) async -> [String]
+
+/// Search for a package by specified name
+/// - Parameter packageName: Name of the package to look up
+/// - Returns: Tuple of two ``[SearchResult]``s, first being the found formulae, second the found casks
+func searchForPackage(packageName: String) async -> (formulae: [SearchResult], casks: [SearchResult])
 {
-    var finalPackageArray: [String]
+    async let formulaSearchResults: TerminalOutput = await shell(AppConstants.brewExecutablePath, ["search", "--formulae", packageName])
+    async let caskSearchResults: TerminalOutput = await shell(AppConstants.brewExecutablePath, ["search", "--casks", packageName])
+    
+    let foundFormulaNames: [String] = await formulaSearchResults.standardOutput.components(separatedBy: "\n")
+    let foundCaskNames: [String] = await caskSearchResults.standardOutput.components(separatedBy: "\n")
+    
+    async let processedFormulae: [SearchResult] = await processSearchResults(packageNameArray: foundFormulaNames, packageType: .formula)
+    async let processedCasks: [SearchResult] = await processSearchResults(packageNameArray: foundCaskNames, packageType: .cask)
+    
+    return (await processedFormulae, await processedCasks)
+}
 
-    switch packageType
+/// Take the raw array of found packages and transform it into a structured array of ``SearchResult``s
+private func processSearchResults(packageNameArray: [String], packageType: PackageType) async -> [SearchResult]
+{
+    var finalArray: [SearchResult] = .init()
+    
+    for packageName in packageNameArray
     {
-    case .formula:
-        let foundFormulae: TerminalOutput = await shell(AppConstants.brewExecutablePath, ["search", "--formulae", packageName])
-
-        finalPackageArray = foundFormulae.standardOutput.components(separatedBy: "\n")
-
-    case .cask:
-        let foundCasks: TerminalOutput = await shell(AppConstants.brewExecutablePath, ["search", "--casks", packageName])
-
-        finalPackageArray = foundCasks.standardOutput.components(separatedBy: "\n")
+        /// Make sure there actually is a search result to place
+        guard !packageName.isEmpty else
+        {
+            continue
+        }
+        
+        guard let splitPackageNameAndVersion = packageName.splitPackageNameAndVersion else
+        {
+            /// If the split fails, just append it as-is
+            finalArray.append(.init(packageName: packageName, packageType: packageType, versions: .init()))
+            continue
+        }
+        
+        /// Let's see if this package was already found before
+        if let indexOfPreviouslyFoundPackage = finalArray.firstIndex(where: { $0.packageName == splitPackageNameAndVersion.packageName })
+        { /// Yes, it was found before. Let's just append its version
+            finalArray[indexOfPreviouslyFoundPackage].versions.append(splitPackageNameAndVersion.packageVersion)
+        }
+        else
+        { /// No, it was not found before. Let's create it
+            finalArray.append(
+                .init(
+                    packageName: splitPackageNameAndVersion.packageName,
+                    packageType: packageType,
+                    versions: [splitPackageNameAndVersion.packageVersion]
+                )
+            )
+        }
     }
+    
+    return finalArray
+}
 
-    finalPackageArray.removeLast()
-
-    AppConstants.logger.info("Search found these packages: \(finalPackageArray, privacy: .auto)")
-
-    return finalPackageArray
+private extension String
+{
+    var splitPackageNameAndVersion: (packageName: String, packageVersion: String)?
+    {
+        let splitName: [String] = self.components(separatedBy: "@")
+        
+        guard let packageName = splitName.first, let packageVersion = splitName.last else
+        {
+            return nil
+        }
+        
+        return (packageName, packageVersion)
+    }
 }

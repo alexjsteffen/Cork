@@ -19,18 +19,11 @@ struct InstallationSearchingView: View, Sendable
     {
         ProgressView("add-package.searching-\(packageRequested)")
             .task
-            {                
-                async let foundFormulae: [String] = searchForPackage(packageName: packageRequested, packageType: .formula)
-                async let foundCasks: [String] = searchForPackage(packageName: packageRequested, packageType: .cask)
+            {
+                let searchResults: (formulae: [SearchResult], casks: [SearchResult]) = await searchForPackage(packageName: packageRequested)
                 
-                for formula in await foundFormulae
-                {
-                    searchResultTracker.foundFormulae.append(.init(packageName: formula, packageType: .formula, versions: .init()))
-                }
-                for cask in await foundCasks
-                {
-                    searchResultTracker.foundFormulae.append(.init(packageName: cask, packageType: .cask, versions: .init()))
-                }
+                searchResultTracker.foundFormulae = searchResults.formulae
+                searchResultTracker.foundCasks = searchResults.casks
                 
                 packageInstallationProcessStep = .presentingSearchResults
             }
