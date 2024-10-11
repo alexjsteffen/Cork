@@ -22,6 +22,8 @@ struct SearchResultRow: View, Sendable
 
     @State private var isLoadingDescription: Bool = true
     @State private var descriptionParsingFailed: Bool = false
+    
+    var descriptionLoadingForciblyDisabled: Bool = false
 
     var body: some View
     {
@@ -64,7 +66,7 @@ struct SearchResultRow: View, Sendable
                 }
             }
 
-            if showDescriptionsInSearchResults
+            if showDescriptionsInSearchResults && !descriptionLoadingForciblyDisabled
             {
                 if !descriptionParsingFailed
                 { // Show this if the description got properly parsed
@@ -97,7 +99,7 @@ struct SearchResultRow: View, Sendable
         }
         .task
         {
-            if showDescriptionsInSearchResults
+            if showDescriptionsInSearchResults && !descriptionLoadingForciblyDisabled
             {
                 AppConstants.logger.info("\(searchResult.packageName, privacy: .auto) came into view")
 
@@ -136,5 +138,15 @@ struct SearchResultRow: View, Sendable
                 }
             }
         }
+    }
+}
+
+extension SearchResultRow
+{
+    func packageDescriptionsAlwaysDisabled() -> SearchResultRow
+    {
+        var modifiedView: SearchResultRow = self
+        modifiedView.descriptionLoadingForciblyDisabled = true
+        return modifiedView
     }
 }

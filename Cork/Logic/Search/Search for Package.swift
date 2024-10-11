@@ -53,11 +53,11 @@ private func processSearchResults(packageNameArray: [String], packageType: Packa
             {
                 if finalArray[indexOfPreviouslyFoundPackage].additionalVersions == nil
                 {
-                    finalArray[indexOfPreviouslyFoundPackage].additionalVersions = [additionalVersion]
+                    finalArray[indexOfPreviouslyFoundPackage].additionalVersions = [.init(versionIdentifier: additionalVersion)]
                 }
                 else
                 {
-                    finalArray[indexOfPreviouslyFoundPackage].additionalVersions?.append(additionalVersion)
+                    finalArray[indexOfPreviouslyFoundPackage].additionalVersions?.append(.init(versionIdentifier: additionalVersion))
                 }
             }
         }
@@ -69,7 +69,7 @@ private func processSearchResults(packageNameArray: [String], packageType: Packa
                     .init(
                         packageName: splitPackageNameAndVersion.packageName,
                         packageType: packageType,
-                        additionalVersions: [additionalVersion]
+                        additionalVersions: [.init(versionIdentifier: additionalVersion)]
                     )
                 )
             }

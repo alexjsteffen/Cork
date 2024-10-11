@@ -15,11 +15,44 @@ struct SearchResult: Identifiable, Hashable, Codable
     let packageName: String
     let packageType: PackageType
     
-    var additionalVersions: [String]?
+    var additionalVersions: [PackageVersion]?
+    
+}
+
+enum SearchResultConstructionError: LocalizedError
+{
+    case couldNotCreateHomebrewVersionString
+    
+    var errorDescription: String?
+    {
+        switch self {
+            case .couldNotCreateHomebrewVersionString:
+                "error.package-install.could-not-create-homebrew-version-string"
+        }
+    }
 }
 
 extension SearchResult
 {
+    func createHomebrewVersionString(fromVersion additionalVersion: PackageVersion?) throws(SearchResultConstructionError) -> String
+    {
+        if let additionalVersion
+        {
+            return "\(self.packageName)@\(additionalVersion.versionIdentifier)"
+        }
+        else
+        {
+            if self.additionalVersions == nil
+            {
+                return "\(self.packageName)"
+            }
+            else
+            {
+                throw .couldNotCreateHomebrewVersionString
+            }
+        }
+    }
+    
     /// Convert the search result to a primitive ``BrewPackage``
     func convertToPackage() -> BrewPackage
     {
@@ -27,7 +60,7 @@ extension SearchResult
             name: self.packageName,
             type: self.packageType,
             installedOn: nil,
-            versions: self.additionalVersions ?? .init(),
+            versions: .init(),
             sizeInBytes: nil
         )
     }

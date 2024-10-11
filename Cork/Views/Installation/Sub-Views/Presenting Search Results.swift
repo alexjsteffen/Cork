@@ -153,13 +153,22 @@ private struct SearchResultsSection: View
                     {
                         DisclosureGroup
                         {
-                            ForEach(additionalVersions, id: \.self)
+                            ForEach(additionalVersions)
                             { additionalVersion in
-                                SearchResultRow(
-                                    searchResult: .init(
-                                        packageName: "\(package.packageName)@\(additionalVersion)",
-                                        packageType: package.packageType)
-                                )
+                                if let versionString = try? package.createHomebrewVersionString(fromVersion: additionalVersion)
+                                {
+                                    SearchResultRow(
+                                        searchResult: .init(
+                                            packageName: versionString,
+                                            packageType: package.packageType)
+                                    )
+                                    .packageDescriptionsAlwaysDisabled()
+                                }
+                                else
+                                {
+                                    Text("add-package.error.could-not-construct-version-string.\(additionalVersion.versionIdentifier)")
+                                }
+                                
                             }
                         } label: {
                             SearchResultRow(searchResult: package)

@@ -5417,6 +5417,9 @@
         }
       }
     },
+    "add-package.error.could-not-construct-version-string.%@" : {
+
+    },
     "add-package.error.timed-out.title" : {
       "localizations" : {
         "cs" : {

@@ -46,7 +46,7 @@ struct SanitizedPackageName: View
                     {
                         /// The version is the length of the package name, + 1 due to the @ character
                         Text("v. \(String(packageNameWithoutTapName.dropFirst(sanitizedName.count + 1)))")
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                             .font(.subheadline)
                     }
                 }
