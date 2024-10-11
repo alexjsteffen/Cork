@@ -18,27 +18,21 @@ struct InstallationSearchingView: View, Sendable
     var body: some View
     {
         ProgressView("add-package.searching-\(packageRequested)")
-            .onAppear
-            {
-                Task
+            .task
+            {                
+                async let foundFormulae: [String] = searchForPackage(packageName: packageRequested, packageType: .formula)
+                async let foundCasks: [String] = searchForPackage(packageName: packageRequested, packageType: .cask)
+                
+                for formula in await foundFormulae
                 {
-                    searchResultTracker.foundFormulae = []
-                    searchResultTracker.foundCasks = []
-
-                    async let foundFormulae: [String] = try searchForPackage(packageName: packageRequested, packageType: .formula)
-                    async let foundCasks: [String] = try searchForPackage(packageName: packageRequested, packageType: .cask)
-
-                    for formula in try await foundFormulae
-                    {
-                        searchResultTracker.foundFormulae.append(BrewPackage(name: formula, type: .formula, installedOn: nil, versions: [], sizeInBytes: nil))
-                    }
-                    for cask in try await foundCasks
-                    {
-                        searchResultTracker.foundCasks.append(BrewPackage(name: cask, type: .cask, installedOn: nil, versions: [], sizeInBytes: nil))
-                    }
-
-                    packageInstallationProcessStep = .presentingSearchResults
+                    searchResultTracker.foundFormulae.append(.init(packageName: formula, packageType: .formula, versions: .init()))
                 }
+                for cask in await foundCasks
+                {
+                    searchResultTracker.foundFormulae.append(.init(packageName: cask, packageType: .cask, versions: .init()))
+                }
+                
+                packageInstallationProcessStep = .presentingSearchResults
             }
     }
 }

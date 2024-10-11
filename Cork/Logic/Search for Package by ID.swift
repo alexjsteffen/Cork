@@ -25,26 +25,26 @@ private enum PackageRetrievalByUUIDError: LocalizedError
 extension UUID
 {
     /// Get a package by UUID from a list
-    func getPackage(tracker: SearchResultTracker) throws -> BrewPackage
+    func getPackage(tracker: SearchResultTracker) throws -> SearchResult
     {
-        var filteredPackage: BrewPackage?
+        var filteredSearchResult: SearchResult?
         
         AppConstants.logger.log("Formula tracker: \(tracker.foundFormulae.count)")
         AppConstants.logger.log("Cask tracker: \(tracker.foundCasks.count)")
         
         if !tracker.foundFormulae.isEmpty
         {
-            filteredPackage = tracker.foundFormulae.filter { $0.id == self }.first
+            filteredSearchResult = tracker.foundFormulae.filter { $0.id == self }.first
         }
         
-        if filteredPackage == nil
+        if filteredSearchResult == nil
         {
-            filteredPackage = tracker.foundCasks.filter { $0.id == self }.first
+            filteredSearchResult = tracker.foundCasks.filter { $0.id == self }.first
         }
         
-        if let filteredPackage
+        if let filteredSearchResult
         {
-            return filteredPackage
+            return filteredSearchResult
         }
         else
         {

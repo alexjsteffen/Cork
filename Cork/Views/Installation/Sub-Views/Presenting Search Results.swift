@@ -63,11 +63,11 @@ struct PresentingSearchResultsView: View
                 {
                     do
                     {
-                        let requestedPackageToPreview: BrewPackage = try foundPackageSelection!.getPackage(tracker: searchResultTracker)
+                        let requestedPackageToPreview: SearchResult = try foundPackageSelection!.getPackage(tracker: searchResultTracker)
 
                         openWindow(value: requestedPackageToPreview)
 
-                        AppConstants.logger.debug("Would preview package \(requestedPackageToPreview.name)")
+                        AppConstants.logger.debug("Would preview package \(requestedPackageToPreview.packageName)")
                     }
                     catch {}
                 }
@@ -107,9 +107,9 @@ struct PresentingSearchResultsView: View
         {
             do
             {
-                let packageToInstall: BrewPackage = try foundPackageSelection.getPackage(tracker: searchResultTracker)
+                let packageToInstall: SearchResult = try foundPackageSelection.getPackage(tracker: searchResultTracker)
 
-                installationProgressTracker.packageBeingInstalled = PackageInProgressOfBeingInstalled(package: packageToInstall, installationStage: .ready, packageInstallationProgress: 0)
+                installationProgressTracker.packageBeingInstalled = PackageInProgressOfBeingInstalled(package: .init(name: packageToInstall.packageName, type: packageToInstall.packageType, installedOn: nil, versions: packageToInstall.versions, sizeInBytes: nil), installationStage: .ready, packageInstallationProgress: 0)
 
                 #if DEBUG
                     AppConstants.logger.info("Packages to install: \(installationProgressTracker.packageBeingInstalled.package.name, privacy: .public)")
@@ -131,14 +131,9 @@ struct PresentingSearchResultsView: View
 
 private struct SearchResultsSection: View
 {
-    fileprivate enum SectionType
-    {
-        case formula, cask
-    }
+    let sectionType: PackageType
 
-    let sectionType: SectionType
-
-    let packageList: [BrewPackage]
+    let packageList: [SearchResult]
 
     @State private var isSectionCollapsed: Bool = false
 
@@ -150,7 +145,7 @@ private struct SearchResultsSection: View
             {
                 ForEach(packageList)
                 { package in
-                    SearchResultRow(searchedForPackage: package)
+                    SearchResultRow(searchResult: package)
                 }
             }
         } header: {
