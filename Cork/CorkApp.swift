@@ -403,10 +403,10 @@ struct CorkApp: App
         .windowResizability(.contentSize)
         .defaultPosition(.center)
         
-        WindowGroup(id: .previewWindowID, for: BrewPackage.self)
+        WindowGroup(id: .previewWindowID, for: SearchResult.self)
         { $packageToPreview in
-            PackagePreview(packageToPreview: packageToPreview)
-                .navigationTitle(packageToPreview?.name ?? "")
+            PackagePreview(searchResult: packageToPreview)
+                .navigationTitle(packageToPreview?.packageName ?? "")
         }
         .windowResizability(.contentSize)
         .windowToolbarStyle(.unifiedCompact)

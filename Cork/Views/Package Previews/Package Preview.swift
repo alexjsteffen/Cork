@@ -10,13 +10,13 @@ import SwiftUI
 struct PackagePreview: View
 {
 
-    let packageToPreview: BrewPackage?
+    let searchResult: SearchResult?
 
     var body: some View
     {
-        if let packageToPreview
+        if let searchResult
         {
-            PackageDetailView(package: packageToPreview)
+            PackageDetailView(package: searchResult.convertToPackage())
                 .isPreview()
                 .fixedSize()
         }

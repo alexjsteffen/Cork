@@ -17,3 +17,18 @@ struct SearchResult: Identifiable, Hashable, Codable
     
     let versions: [String]
 }
+
+extension SearchResult
+{
+    /// Convert the search result to a primitive ``BrewPackage``
+    func convertToPackage() -> BrewPackage
+    {
+        return .init(
+            name: self.packageName,
+            type: self.packageType,
+            installedOn: nil,
+            versions: self.versions,
+            sizeInBytes: nil
+        )
+    }
+}
